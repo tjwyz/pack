@@ -11,7 +11,7 @@ const writeFile = require('write');
 const log = console.log;
 const store = require('./store');
 program
-  .version('0.0.1','-v, --version')
+  .version('0.0.2','-v, --version')
   .option('-h, --help', 'helpInfomation')
   .parse(process.argv);
 

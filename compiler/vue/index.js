@@ -71,20 +71,24 @@ module.exports = function ( filePath, moduleName ) {
 		return JSON.stringify(item);
 	}).toString();
 	obj.render = beautify(vueCompiler.compile(template).render, { indent_size: 4 });
-	obj.staticRenderFns = beautify(vueCompiler.compile(template).staticRenderFns, { indent_size: 4 });
+	var staticRenderFns = vueCompiler.compile(template).staticRenderFns;
+	staticRenderFns = staticRenderFns.map(function(item){
+		return 'function() {' + item + '}'
+	})
+
+	obj.staticRenderFns = staticRenderFns.toString();
 	obj.script = script;
 	obj.config = config;
 	obj.moduleName = moduleName;
 
 	obj.scopeId = "vue-" + uuidV1();
 
-
 	var loaderTpl = fs.readFileSync(path.join(__dirname, './template.tpl'), {encoding:'utf8'}); 
 	var jsRet = ejs.render(loaderTpl, obj); 
 	var cssRet = style;
 
 
-	jsRet = UglifyJS.minify(jsRet).code;
+	// jsRet = UglifyJS.minify(jsRet).code;
 	cssRet = new CleanCSS({}).minify(cssRet).styles;
 
 	store.set(obj.moduleName + '.js',jsRet);
