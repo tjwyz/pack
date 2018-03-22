@@ -1,0 +1,41 @@
+{
+    "name": "pack",
+    "version": "0.0.1",
+    "description": "compile pack and release",
+    "bin": {
+        "pack": "./index.js"
+    },
+    "directories": {
+        "test": "test"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "tjwyz",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/tjwyz/pack/issues"
+    },
+    "homepage": "https://github.com/tjwyz/pack#readme",
+    "dependencies": {
+        "autoprefixer": "^8.1.0",
+        "chalk": "^2.3.2",
+        "chokidar": "^2.0.2",
+        "clean-css": "^4.1.11",
+        "colors": "^1.2.1",
+        "commander": "^2.15.0",
+        "diff": "^3.5.0",
+        "ejs": "^2.5.7",
+        "js-beautify": "^1.7.5",
+        "postcss": "^6.0.20",
+        "precss": "^3.1.2",
+        "rd": "^1.1.2",
+        "readdir-recursive": "0.0.4",
+        "replace-string": "^1.1.0",
+        "shelljs": "^0.8.1",
+        "time-stamp": "^2.0.0",
+        "uglify-js": "^3.3.16",
+        "uuid": "^3.2.1",
+        "write": "^1.0.3"
+    }
+}
