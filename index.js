@@ -20,7 +20,7 @@ const commander = program.parse(process.argv);
 
 
 
-var configFilePath = commander.args[0] || 'vtp.config.js';
+var configFilePath = commander.args[0] || 'pack.config.js';
 configFilePath = path.normalize(process.cwd() + '/' + configFilePath);
 var configCwdPath = path.dirname(configFilePath);
 var config = require(configFilePath);

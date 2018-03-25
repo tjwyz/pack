@@ -1,6 +1,6 @@
 {
     "name": "ppack",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "compile pack and release",
     "bin": {
         "pack": "./index.js"
