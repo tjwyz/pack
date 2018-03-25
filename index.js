@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 const fs = require('fs');
 const path = require('path');
 const chokidar = require('chokidar');
@@ -37,7 +38,7 @@ var packer = require('./packer/index');
 var compiling = false;
 
 
-chokidar.watch(workSrcDirectroy, {ignored: /(^|[\/\\])\../}).on('change', (event, currenpath) => {
+var  changeCb = (event, currenpath) => {
 	if (compiling) {
 		return;
 	}
@@ -67,4 +68,15 @@ chokidar.watch(workSrcDirectroy, {ignored: /(^|[\/\\])\../}).on('change', (event
 	var endTime = new Date().getTime();
 	compiling = false;
 	log(chalk.red('%s s has been used up!'), (endTime - startTime) / 1000);
-});
+	log('\n');
+}
+changeCb();
+
+var content = [
+    '',
+    ' pack listener start',
+    ''
+];
+log(chalk.yellow(content.join('\n')));
+
+chokidar.watch(workSrcDirectroy, {ignored: /(^|[\/\\])\../}).on('change', changeCb);
